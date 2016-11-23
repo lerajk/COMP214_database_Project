@@ -3,14 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\ADDRESS;
-use app\models\AddressSearch;
+use app\models\TBADDRESS;
+use app\models\TBADDRESSSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AddressController implements the CRUD actions for ADDRESS model.
+ * AddressController implements the CRUD actions for TBADDRESS model.
  */
 class AddressController extends Controller
 {
@@ -30,12 +30,12 @@ class AddressController extends Controller
     }
 
     /**
-     * Lists all ADDRESS models.
+     * Lists all TBADDRESS models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AddressSearch();
+        $searchModel = new TBADDRESSSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class AddressController extends Controller
     }
 
     /**
-     * Displays a single ADDRESS model.
+     * Displays a single TBADDRESS model.
      * @param string $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class AddressController extends Controller
     }
 
     /**
-     * Creates a new ADDRESS model.
+     * Creates a new TBADDRESS model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ADDRESS();
+        $model = new TBADDRESS();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ADD_ID]);
+            return $this->redirect(['view', 'id' => $model->ADDRESS_ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class AddressController extends Controller
     }
 
     /**
-     * Updates an existing ADDRESS model.
+     * Updates an existing TBADDRESS model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -85,7 +85,7 @@ class AddressController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ADD_ID]);
+            return $this->redirect(['view', 'id' => $model->ADDRESS_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class AddressController extends Controller
     }
 
     /**
-     * Deletes an existing ADDRESS model.
+     * Deletes an existing TBADDRESS model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +107,15 @@ class AddressController extends Controller
     }
 
     /**
-     * Finds the ADDRESS model based on its primary key value.
+     * Finds the TBADDRESS model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return ADDRESS the loaded model
+     * @return TBADDRESS the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ADDRESS::findOne($id)) !== null) {
+        if (($model = TBADDRESS::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

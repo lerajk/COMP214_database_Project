@@ -31,11 +31,11 @@ class TBEVENT extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['EVENT_ID', 'EVE_NAME', 'USER_ID'], 'required'],
+            [['EVENT_ID', 'EVE_NAME', 'EVE_DATE_BEGIN', 'EVE_DATE_END', 'USER_ID'], 'required'],
             [['EVENT_ID', 'USER_ID'], 'number'],
-            [['EVE_DATE_BEGIN', 'EVE_DATE_END'], 'safe'],
-            [['EVE_NAME'], 'string', 'max' => 60],
-            [['EVE_PLACE'], 'string', 'max' => 80],
+            [['EVE_NAME'], 'string', 'max' => 80],
+            [['EVE_DATE_BEGIN', 'EVE_DATE_END'], 'string', 'max' => 7],
+            [['EVE_PLACE'], 'string', 'max' => 100],
             [['EVE_NOTES'], 'string', 'max' => 200],
             [['EVENT_ID'], 'unique'],
             [['USER_ID'], 'exist', 'skipOnError' => true, 'targetClass' => TBUSER1::className(), 'targetAttribute' => ['USER_ID' => 'USER_ID']],

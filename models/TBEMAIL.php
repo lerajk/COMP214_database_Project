@@ -7,12 +7,10 @@ use Yii;
 /**
  * This is the model class for table "TB_EMAIL".
  *
- * @property string $EMA_ID
+ * @property string $EMAIL_ID
  * @property string $EMA_TYPE
  * @property string $EMA_EMAIL
- * @property string $PER_ID
- *
- * @property TBPERSON $pER
+ * @property string $PERSON_ID
  */
 class TBEMAIL extends \yii\db\ActiveRecord
 {
@@ -30,12 +28,12 @@ class TBEMAIL extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['EMA_ID', 'EMA_EMAIL', 'PER_ID'], 'required'],
-            [['EMA_ID', 'PER_ID'], 'number'],
-            [['EMA_TYPE'], 'string', 'max' => 20],
-            [['EMA_EMAIL'], 'string', 'max' => 30],
-            [['EMA_ID'], 'unique'],
-            [['PER_ID'], 'exist', 'skipOnError' => true, 'targetClass' => TBPERSON::className(), 'targetAttribute' => ['PER_ID' => 'PER_ID']],
+            [['EMAIL_ID', 'EMA_EMAIL', 'PERSON_ID'], 'required'],
+            [['EMAIL_ID', 'PERSON_ID'], 'number'],
+            [['EMA_TYPE'], 'string', 'max' => 30],
+            [['EMA_EMAIL'], 'string', 'max' => 50],
+            [['EMAIL_ID'], 'unique'],
+            [['PERSON_ID'], 'exist', 'skipOnError' => true, 'targetClass' => TBPERSON::className(), 'targetAttribute' => ['PERSON_ID' => 'PERSON_ID']],
         ];
     }
 
@@ -45,18 +43,10 @@ class TBEMAIL extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'EMA_ID' => 'Ema  ID',
+            'EMAIL_ID' => 'Email  ID',
             'EMA_TYPE' => 'Ema  Type',
             'EMA_EMAIL' => 'Ema  Email',
-            'PER_ID' => 'Per  ID',
+            'PERSON_ID' => 'Person  ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPER()
-    {
-        return $this->hasOne(TBPERSON::className(), ['PER_ID' => 'PER_ID']);
     }
 }

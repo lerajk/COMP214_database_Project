@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\EmailSearch */
+/* @var $model app\models\TBEMAILSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,13 +15,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'EMA_ID') ?>
+    <?= $form->field($model, 'EMAIL_ID') ?>
 
     <?= $form->field($model, 'EMA_TYPE') ?>
 
     <?= $form->field($model, 'EMA_EMAIL') ?>
 
-    <?= $form->field($model, 'PER_ID') ?>
+    <?= $form->field($model, 'PERSON_ID') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

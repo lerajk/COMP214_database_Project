@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TBPERSON;
-use app\models\PersonSearch;
+use app\models\TBPERSONSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class PersonController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PersonSearch();
+        $searchModel = new TBPERSONSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +66,7 @@ class PersonController extends Controller
         $model = new TBPERSON();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->PER_ID]);
+            return $this->redirect(['view', 'id' => $model->PERSON_ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class PersonController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->PER_ID]);
+            return $this->redirect(['view', 'id' => $model->PERSON_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,

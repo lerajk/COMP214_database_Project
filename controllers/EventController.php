@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TBEVENT;
-use app\models\EventSearch;
+use app\models\TBEVENTSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class EventController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EventSearch();
+        $searchModel = new TBEVENTSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

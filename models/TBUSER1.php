@@ -34,10 +34,10 @@ class TBUSER1 extends \yii\db\ActiveRecord
         return [
             [['USER_ID', 'USE_NAME', 'USE_LOGIN', 'USE_PASSWORD', 'USE_EMAIL'], 'required'],
             [['USER_ID'], 'number'],
-            [['USE_NAME'], 'string', 'max' => 60],
-            [['USE_LOGIN'], 'string', 'max' => 20],
+            [['USE_NAME'], 'string', 'max' => 50],
+            [['USE_LOGIN'], 'string', 'max' => 30],
             [['USE_PASSWORD'], 'string', 'max' => 80],
-            [['USE_EMAIL'], 'string', 'max' => 30],
+            [['USE_EMAIL'], 'string', 'max' => 40],
             [['USER_ID'], 'unique'],
         ];
     }

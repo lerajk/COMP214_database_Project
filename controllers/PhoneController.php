@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TBPHONE;
-use app\models\PhoneSearch;
+use app\models\TBPHONESearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class PhoneController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PhoneSearch();
+        $searchModel = new TBPHONESearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +66,7 @@ class PhoneController extends Controller
         $model = new TBPHONE();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->PHO_ID]);
+            return $this->redirect(['view', 'id' => $model->PHONE_ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class PhoneController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->PHO_ID]);
+            return $this->redirect(['view', 'id' => $model->PHONE_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,

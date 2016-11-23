@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EmailSearch */
+/* @var $searchModel app\models\TBEMAILSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tbemails';
@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'EMA_ID',
+            'EMAIL_ID:email',
             'EMA_TYPE',
             'EMA_EMAIL:email',
-            'PER_ID',
+            'PERSON_ID',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

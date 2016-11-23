@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TBEMAIL;
-use app\models\EmailSearch;
+use app\models\TBEMAILSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class EmailController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EmailSearch();
+        $searchModel = new TBEMAILSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +66,7 @@ class EmailController extends Controller
         $model = new TBEMAIL();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->EMA_ID]);
+            return $this->redirect(['view', 'id' => $model->EMAIL_ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class EmailController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->EMA_ID]);
+            return $this->redirect(['view', 'id' => $model->EMAIL_ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
