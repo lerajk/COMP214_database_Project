@@ -32,7 +32,7 @@ class TBPERSON extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['PERSON_ID', 'PER_FIRST', 'PER_LAST', 'PER_SEX', 'PER_ACTIVE', 'USER_ID'], 'required'],
+            [['PER_FIRST', 'PER_LAST', 'PER_SEX', 'PER_ACTIVE', 'USER_ID'], 'required'],
             [['PERSON_ID', 'PER_ACTIVE', 'USER_ID'], 'number'],
             [['PER_FIRST', 'PER_MIDDLE', 'PER_LAST'], 'string', 'max' => 50],
             [['PER_SEX'], 'string', 'max' => 1],
@@ -48,14 +48,22 @@ class TBPERSON extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'PERSON_ID' => 'Person  ID',
-            'PER_FIRST' => 'Per  First',
-            'PER_MIDDLE' => 'Per  Middle',
-            'PER_LAST' => 'Per  Last',
-            'PER_SEX' => 'Per  Sex',
-            'PER_SIN' => 'Per  Sin',
-            'PER_ACTIVE' => 'Per  Active',
-            'USER_ID' => 'User  ID',
+            'PERSON_ID' => 'ID',
+            'PER_FIRST' => 'First Name',
+            'PER_MIDDLE' => 'Middle Name',
+            'PER_LAST' => 'Last Name',
+            'PER_SEX' => 'Sex',
+            'PER_SIN' => 'SIN',
+            'PER_ACTIVE' => 'Is Active',
+            'USER_ID' => 'User Name',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(TBUSER1::className(), ['USER_ID' => 'USER_ID']);
     }
 }

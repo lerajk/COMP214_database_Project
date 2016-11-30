@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->EVENT_ID;
 $this->params['breadcrumbs'][] = ['label' => 'Tbevents', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="tbevent-view">
 
@@ -24,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -34,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'EVE_DATE_END',
             'EVE_PLACE',
             'EVE_NOTES',
-            'USER_ID',
-        ],
+            'user.USE_NAME'
+        ]
     ]) ?>
 
 </div>

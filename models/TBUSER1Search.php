@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\TBEVENT;
+use app\models\TBUSER1;
 
 /**
- * EventSearch represents the model behind the search form about `app\models\TBEVENT`.
+ * TBUSER1Search represents the model behind the search form about `app\models\TBUSER1`.
  */
-class EventSearch extends TBEVENT
+class TBUSER1Search extends TBUSER1
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class EventSearch extends TBEVENT
     public function rules()
     {
         return [
-            [['EVENT_ID', 'USER_ID'], 'number'],
-            [['EVE_NAME', 'EVE_DATE_BEGIN', 'EVE_DATE_END', 'EVE_PLACE', 'EVE_NOTES'], 'safe'],
+            [['USER_ID'], 'number'],
+            [['USE_NAME', 'USE_LOGIN', 'USE_PASSWORD', 'USE_EMAIL'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EventSearch extends TBEVENT
      */
     public function search($params)
     {
-        $query = TBEVENT::find();
+        $query = TBUSER1::find();
 
         // add conditions that should always apply here
 
@@ -59,15 +59,13 @@ class EventSearch extends TBEVENT
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'EVENT_ID' => $this->EVENT_ID,
-            'EVE_DATE_BEGIN' => $this->EVE_DATE_BEGIN,
-            'EVE_DATE_END' => $this->EVE_DATE_END,
             'USER_ID' => $this->USER_ID,
         ]);
 
-        $query->andFilterWhere(['like', 'EVE_NAME', $this->EVE_NAME])
-            ->andFilterWhere(['like', 'EVE_PLACE', $this->EVE_PLACE])
-            ->andFilterWhere(['like', 'EVE_NOTES', $this->EVE_NOTES]);
+        $query->andFilterWhere(['like', 'USE_NAME', $this->USE_NAME])
+            ->andFilterWhere(['like', 'USE_LOGIN', $this->USE_LOGIN])
+            ->andFilterWhere(['like', 'USE_PASSWORD', $this->USE_PASSWORD])
+            ->andFilterWhere(['like', 'USE_EMAIL', $this->USE_EMAIL]);
 
         return $dataProvider;
     }

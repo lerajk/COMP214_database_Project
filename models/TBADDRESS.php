@@ -32,7 +32,7 @@ class TBADDRESS extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ADDRESS_ID', 'ADD_ADDRESS', 'PERSON_ID'], 'required'],
+            [['ADD_ADDRESS', 'PERSON_ID'], 'required'],
             [['ADDRESS_ID', 'PERSON_ID'], 'number'],
             [['ADD_TYPE', 'ADD_CITY', 'ADD_STATE', 'ADD_COUNTRY', 'ADD_ZIP'], 'string', 'max' => 30],
             [['ADD_ADDRESS'], 'string', 'max' => 80],
@@ -47,14 +47,22 @@ class TBADDRESS extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ADDRESS_ID' => 'Address  ID',
-            'ADD_TYPE' => 'Add  Type',
-            'ADD_ADDRESS' => 'Add  Address',
-            'ADD_CITY' => 'Add  City',
-            'ADD_STATE' => 'Add  State',
-            'ADD_COUNTRY' => 'Add  Country',
-            'ADD_ZIP' => 'Add  Zip',
-            'PERSON_ID' => 'Person  ID',
+            'ADDRESS_ID' => 'ID',
+            'ADD_TYPE' => 'Address Type',
+            'ADD_ADDRESS' => 'Address',
+            'ADD_CITY' => 'City',
+            'ADD_STATE' => 'State',
+            'ADD_COUNTRY' => 'Country',
+            'ADD_ZIP' => 'Zip Code',
+            'PERSON_ID' => 'Contact Name',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPerson()
+    {
+        return $this->hasOne(TBPERSON::className(), ['PERSON_ID' => 'PERSON_ID']);
     }
 }

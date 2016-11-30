@@ -44,9 +44,17 @@ class TBEMAIL extends \yii\db\ActiveRecord
     {
         return [
             'EMAIL_ID' => 'Email  ID',
-            'EMA_TYPE' => 'Ema  Type',
-            'EMA_EMAIL' => 'Ema  Email',
-            'PERSON_ID' => 'Person  ID',
+            'EMA_TYPE' => 'Email Type',
+            'EMA_EMAIL' => 'Email',
+            'PERSON_ID' => 'Contact Name',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPerson()
+    {
+        return $this->hasOne(TBPERSON::className(), ['PERSON_ID' => 'PERSON_ID']);
     }
 }

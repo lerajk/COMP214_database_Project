@@ -31,7 +31,7 @@ class TBEVENT extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['EVENT_ID', 'EVE_NAME', 'EVE_DATE_BEGIN', 'EVE_DATE_END', 'USER_ID'], 'required'],
+            [['EVE_NAME', 'EVE_DATE_BEGIN', 'EVE_DATE_END', 'USER_ID'], 'required'],
             [['EVENT_ID', 'USER_ID'], 'number'],
             [['EVE_NAME'], 'string', 'max' => 80],
             [['EVE_DATE_BEGIN', 'EVE_DATE_END'], 'string', 'max' => 7],
@@ -48,13 +48,21 @@ class TBEVENT extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'EVENT_ID' => 'Event  ID',
-            'EVE_NAME' => 'Eve  Name',
-            'EVE_DATE_BEGIN' => 'Eve  Date  Begin',
-            'EVE_DATE_END' => 'Eve  Date  End',
-            'EVE_PLACE' => 'Eve  Place',
-            'EVE_NOTES' => 'Eve  Notes',
-            'USER_ID' => 'User  ID',
+            'EVENT_ID' => 'ID',
+            'EVE_NAME' => 'Event',
+            'EVE_DATE_BEGIN' => 'Start Date',
+            'EVE_DATE_END' => 'End Date',
+            'EVE_PLACE' => 'Place',
+            'EVE_NOTES' => 'Notes',
+            'USER_ID' => 'User Name',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(TBUSER1::className(), ['USER_ID' => 'USER_ID']);
     }
 }

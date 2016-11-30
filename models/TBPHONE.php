@@ -28,7 +28,7 @@ class TBPHONE extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['PHONE_ID', 'PHO_NUMBER', 'PERSON_ID'], 'required'],
+            [['PHO_NUMBER', 'PERSON_ID'], 'required'],
             [['PHONE_ID', 'PERSON_ID'], 'number'],
             [['PHO_TYPE'], 'string', 'max' => 30],
             [['PHO_NUMBER'], 'string', 'max' => 50],
@@ -43,10 +43,18 @@ class TBPHONE extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'PHONE_ID' => 'Phone  ID',
-            'PHO_TYPE' => 'Pho  Type',
-            'PHO_NUMBER' => 'Pho  Number',
-            'PERSON_ID' => 'Person  ID',
+            'PHONE_ID' => 'ID',
+            'PHO_TYPE' => 'Type',
+            'PHO_NUMBER' => 'Number',
+            'PERSON_ID' => 'Contact Name',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPerson()
+    {
+        return $this->hasOne(TBPERSON::className(), ['PERSON_ID' => 'PERSON_ID']);
     }
 }

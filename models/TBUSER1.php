@@ -32,7 +32,7 @@ class TBUSER1 extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['USER_ID', 'USE_NAME', 'USE_LOGIN', 'USE_PASSWORD', 'USE_EMAIL'], 'required'],
+            [['USE_NAME', 'USE_LOGIN', 'USE_PASSWORD', 'USE_EMAIL'], 'required'],
             [['USER_ID'], 'number'],
             [['USE_NAME'], 'string', 'max' => 50],
             [['USE_LOGIN'], 'string', 'max' => 30],
@@ -48,18 +48,18 @@ class TBUSER1 extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'USER_ID' => 'User  ID',
-            'USE_NAME' => 'Use  Name',
-            'USE_LOGIN' => 'Use  Login',
-            'USE_PASSWORD' => 'Use  Password',
-            'USE_EMAIL' => 'Use  Email',
+            'USER_ID' => 'ID',
+            'USE_NAME' => 'User Name',
+            'USE_LOGIN' => 'Login',
+            'USE_PASSWORD' => 'Password',
+            'USE_EMAIL' => 'Email',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTBEVENTs()
+    public function getEvents()
     {
         return $this->hasMany(TBEVENT::className(), ['USER_ID' => 'USER_ID']);
     }
@@ -67,7 +67,7 @@ class TBUSER1 extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTBPeople()
+    public function getPerson()
     {
         return $this->hasMany(TBPERSON::className(), ['USER_ID' => 'USER_ID']);
     }

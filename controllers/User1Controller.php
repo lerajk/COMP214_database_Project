@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TBUSER1;
-use app\models\User1Search;
+use app\models\TBUSER1Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class User1Controller extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new User1Search();
+        $searchModel = new TBUSER1Search();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
