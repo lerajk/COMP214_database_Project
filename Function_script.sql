@@ -9,7 +9,7 @@ select * from tb_user_1;
 -- FUNCTION ONE FOR PROJECT
 
 -- MAIN QUERY FOR FUNCTION ONE
-select person_id, count(pho_number) TOTAL from tb_phone HAVING PERSON_ID = 544 group by person_id;
+select person_id, count(pho_number) TOTAL from tb_phone /*HAVING PERSON_ID = 544*/ group by person_id;
 
 -- CREATE FUNCTION 1: TO GET NUMBER OF PHONES NUMBER BASED ON PERSON_ID
 CREATE OR REPLACE
